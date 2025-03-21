@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>猜猜我是谁</title>
+   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+#submitBtn, #closeModalBtn{
+  font-size: 15px;
+  position: relative;
+  top:92%;
+  left:4%;
+  padding: 5px;
+}
+
+  img {
+    width: 2000px;
+    position: absolute;
+    top: 2.7%;
+    left: 0.8%;
+
+    }
+
+  .overlay-image {
+    position: absolute;
+    top: 30%;
+    left: 5.5%;
+    width: 30%;
+    z-index: 2;
+    }
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(100, 208, 161);
+  padding: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 4;
+  border-radius: 30px;
+
+    }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 3;
+
+    }
+
+    button {
+      position: relative;
+      top: 350px;
+      left: 58%;
+      color: rgba(33, 57, 122);
+      background-color: rgba(252, 242, 116);
+      font-size: 20px;
+      font-family: bold;
+      border-radius: 10px;
+      cursor: pointer;
+      padding-left: 30px;
+      padding-right: 30px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      font-family: 'Press Start 2P', cursive;
+    }
+
+    .result {
+      position:  fixed;
+      margin-top: 70px;
+      font-size: 50px;
+      color: rgba(33, 57, 122);
+      left: 55%;
+      top: 43%;
+      font-family: bold;
+      background-color:  rgba(252, 242, 116);
+      border-radius: 20px;
+      padding-left: 30px;
+      padding-right: 30px;
+      font-weight: bold;
+    }
+
+  </style>
+</head>
+
+<body>
+
+
+  <div style="position: absolute;
+      top: 17%;
+      left: 66%;
+      transform: translate(-50%, -50%);
+      color: rgba(252,242,116);
+      font-size: 80px;
+      text-shadow:  -3px -3px 0 black, -7px 6px 0 black, -3px 3px 0 black, 3px 3px 0 black;
+       font-family: 'Press Start 2P', cursive;
+      ">? ? ?</div>
+
+<div style="position: absolute;
+    top: 27%;
+    left: 79%;
+    transform: translate(-50%, -50%);
+    color: rgba(252,242,116);
+    font-size: 40px;
+    text-shadow:  -2px -2px 0 black, -6px 6px 0 black, -2px 2px 0 black, 2px 2px 0 black;
+font-family: 'Press Start 2P', cursive;
+width: 1000px;
+    ">Guess who I am ?</div>
+
+    <div style="position: absolute;
+    top: 35%;
+    left: 81%;
+    transform: translate(-50%, -50%);
+    color: rgba(252,242,116);
+    font-size: 25px;
+    width: 1000px;
+    font-family: 'Press Start 2P', cursive;
+    ">Choose your Pokémon!</div>
+
+  <img class="overlay-image" src="img/6.png" alt="覆盖图片">
+
+  <body style="background-color:rgba(33, 57, 122)" ;>
+
+    <img src="img/2.png">
+
+    <img src="img/5.png" alt="5" style="position:absolute;top:50%;left:5%;width: 2000px;z-index: 1;">
+
+    <button id="openModalBtn" onclick="openModal()">Have a try</button>
+
+    <div class="overlay" id="overlay"></div>
+    <div class="modal" id="modal">
+      <h2>请说出你的想法吧!</h2>
+      <input type="text" id="inputValue" placeholder="神奇宝贝出动！">
+      <button id="submitBtn" onclick="submitData()">Yse</button>
+      <button id="closeModalBtn" onclick="closeModal()">No</button>
+    </div>
+    <div class="result" id="result"></div>
+
+
+    <img id="dynamicImage"
+          src="img/使用工具生成图片.png"
+           src="img/7.png"
+           src="img/小火龙.png"
+           src="img/4b16dbaa05c016cfd2c07d78e688c31.png"
+           src="img/5988d6b9cc22ae5aff84307a20026c8.png"
+           src="img/使用工具生成图片 (1).png"
+           src="img/4928303433ef547912529b78a03aa34.png"
+           src="img/80e09ca0a936de9997a30c063e8f57c.png"
+           src="img/cfa5884391d1003868481930264bd4f.png"
+           src="img/4aff611bd64d8ec000fe8e56c5837a6.png"
+           src="img/c722abdd088905639fd6965f4c4721a.png"
+           src="img/4afea3b5a305e12dc1656b28f58881d.png"
+           src="img/b51fa46a8d3448f78f5ac133d722966.png"
+           src="img/1312404fa49b41eba1ae25a1310e288.png"
+           src="img/40e190edee95205b43f8f346e5b54d9.png"
+           src="img/29422d435a939e99bf0cc493475c415.png"
+           src="img/d6dd85218433b1aaf1d16e4c8765400.png"
+           src="img/c2189d74fecd4e1a60bb46d0d56034e.png"
+           src="img/6b36341fb234176f11273ce21a1e261.png"
+           src="img/b7d0a4414a2fe8d5b00c6c1f527b83a.png"
+
+           style="display: none;
+                  position: absolute;
+                  top: 16%;
+                  left: 5.5%;
+                  width: 30%;
+                  z-index: 100;">
+
+    <script>
+
+      const modal = document.getElementById('modal');
+      const overlay = document.getElementById('overlay');
+      const inputValue = document.getElementById('inputValue');
+      const result = document.getElementById('result');
+      const overlayImage = document.querySelector('.overlay-image');
+      const dynamicImage = document.getElementById('dynamicImage');
+      function openModal() {
+        modal.style.display = 'block';
+        overlay.style.display = 'block';
+      }
+      function closeModal() {
+        modal.style.display = 'none';
+        overlay.style.display = 'none';
+      }
+      function submitData() {
+        const value = inputValue.value.trim();
+        if (value === '精灵蛋') {
+          result.textContent = '你真是另辟蹊径！';
+           dynamicImage.style.display = 'block';
+        } else if (value === '皮卡丘') {
+          result.textContent = '你是不是只知道这一个';
+          dynamicImage.src = "img/7.png";
+          dynamicImage.style.display = 'block';
+          overlayImage.style.display = 'none';
+        } else if (value === '小火龙') {
+          result.textContent = '喷火的小家伙！你这家伙不赖嘛';
+          dynamicImage.src ="img/小火龙.png"
+           dynamicImage.style.display = 'block';
+           overlayImage.style.display = 'none';
+        } else if (value === '杰尼龟') {
+          result.textContent = '水枪准备！';
+          dynamicImage.src ="img/4b16dbaa05c016cfd2c07d78e688c31.png"
+           dynamicImage.style.display = 'block';
+           overlayImage.style.display = 'none';
+        } else if (value === '妙蛙种子') {
+          result.textContent = '草系大师！';
+          dynamicImage.src ="img/5988d6b9cc22ae5aff84307a20026c8.png"
+           dynamicImage.style.display = 'block';
+           overlayImage.style.display = 'none';
+        } else if (value === '波波') {
+          result.textContent = '宝宝你是一只小鸡';
+        dynamicImage.src ="img/使用工具生成图片 (1).png"
+        dynamicImage.style.display = 'block';
+          overlayImage.style.display = 'none';
+        } else if (value === '大针蜂') {
+          result.textContent = '虫之预感!';
+        dynamicImage.src ="img/4928303433ef547912529b78a03aa34.png"
+           dynamicImage.style.display = 'block';
+           overlayImage.style.display = 'none';
+        } else if (value === '绿毛虫') {
+          result.textContent = '虫宝宝....';
+      dynamicImage.src ="img/使用工具生成图片.png"
+           dynamicImage.style.display = 'block';
+           overlayImage.style.display = 'none';
+        } else if (value === '卡比兽') {
+          result.textContent = '吃饱就睡！';
+          dynamicImage.src ="img/80e09ca0a936de9997a30c063e8f57c.png"
+           dynamicImage.style.display = 'block';
+           overlayImage.style.display = 'none';
+        } else if (value === '耿鬼') {
+          result.textContent = '潜入影子中！';
+          dynamicImage.src ="img/cfa5884391d1003868481930264bd4f.png"
+           dynamicImage.style.display = 'block';
+           overlayImage.style.display = 'none';
+        } else if (value === '快龙') {
+          result.textContent = '准神！阁下是个高手';
+          dynamicImage.src ="img/4aff611bd64d8ec000fe8e56c5837a6.png"
+           dynamicImage.style.display = 'block';
+           overlayImage.style.display = 'none';
+        } else if (value === '伊布') {
+          result.textContent = '进化可能性∞！';
+          dynamicImage.src ="img/c722abdd088905639fd6965f4c4721a.png"
+           dynamicImage.style.display = 'block';
+           overlayImage.style.display = 'none';
+        } else if (value === '超梦') {
+          result.textContent = '传说中的存在！阁下何方神圣？';
+          dynamicImage.src ="img/4afea3b5a305e12dc1656b28f58881d.png"
+           dynamicImage.style.display = 'block';
+           overlayImage.style.display = 'none';
+        } else if (value === '梦幻') {
+          result.textContent = '幻之宝可梦！检测到开挂行为';
+          dynamicImage.src ="img/b51fa46a8d3448f78f5ac133d722966.png"
+           dynamicImage.style.display = 'block';
+           overlayImage.style.display = 'none';
+        } else if (value === '暴鲤龙') {
+          result.textContent = '注意飞行属性！';
+          dynamicImage.src ="img/1312404fa49b41eba1ae25a1310e288.png"
+           dynamicImage.style.display = 'block';
+           overlayImage.style.display = 'none';
+        } else if (value === '可达鸭') {
+          result.textContent = '头疼要发作了！';
+          dynamicImage.src ="img/1312404fa49b41eba1ae25a1310e288.png"
+           dynamicImage.style.display = 'block';
+           overlayImage.style.display = 'none';
+        } else if (value === '胖丁') {
+          result.textContent = '要开始唱歌了～♫';
+          dynamicImage.src ="img/29422d435a939e99bf0cc493475c415.png"
+           dynamicImage.style.display = 'block';
+           overlayImage.style.display = 'none';
+        } else if (value === '拉普拉斯') {
+          result.textContent = '海上的士！';
+          dynamicImage.src ="img/d6dd85218433b1aaf1d16e4c8765400.png"
+           dynamicImage.style.display = 'block';
+           overlayImage.style.display = 'none';
+        } else if (value === '喷火龙') {
+          result.textContent = '天空的霸主！';
+          dynamicImage.src ="img/c2189d74fecd4e1a60bb46d0d56034e.png"
+           dynamicImage.style.display = 'block';
+           overlayImage.style.display = 'none';
+        } else if (value === '水箭龟') {
+          result.textContent = '水炮MAX！';
+          dynamicImage.src ="img/6b36341fb234176f11273ce21a1e261.png"
+           dynamicImage.style.display = 'block';
+           overlayImage.style.display = 'none';
+        } else if (value === '雷丘') {
+          result.textContent = '皮卡丘的进化型！';
+          dynamicImage.src ="img/b7d0a4414a2fe8d5b00c6c1f527b83a.png"
+           dynamicImage.style.display = 'block';
+           overlayImage.style.display = 'none';
+        } else {
+          result.textContent = '是' + value + '吗？再想想';
+          dynamicImage.style.display = 'none';
+            overlayImage.style.display = 'block';
+          }
+
+      modal.style.display = 'none';
+      overlay.style.display = 'none';
+        }
+
+
+    </script>
+
+  </body>
+
+</html>
